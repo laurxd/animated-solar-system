@@ -1,0 +1,65 @@
+/* General Page Styling */
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at center, #000010, #000);
+  color: #fff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Header */
+header {
+  padding: 20px 0;
+  background: linear-gradient(to bottom, #02021b, #000);
+  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+}
+
+header h1 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+/* Canvas */
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
+  background: radial-gradient(circle, #000020, #000);
+  border: 2px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Control Buttons (for later) */
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.controls button {
+  background: #111;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+footer {
+  padding: 10px 0;
+  font-size: 0.9rem;
+  background: #01010f;
+  border-top: 1px solid #222;
+}
