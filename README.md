@@ -16,8 +16,8 @@ A multimedia project that visualizes planets orbiting the sun using HTML, CSS, a
 - Audio API
 - Video API
 
-## Author
-Nitu Laurentiu Cristian & Apostolescu Raluca Andreea
-
 ## Live Demo
 [Click here to view the project](https://laurxd.github.io/animated-solar-system/)
+
+## Author
+Nitu Laurentiu Cristian & Apostolescu Raluca Andreea
