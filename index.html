@@ -4,28 +4,58 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Animated Solar System</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- Some css for polish -->
+  <style>
+    body {
+      background: radial-gradient(circle at center, #000010, #000);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    canvas {
+      background: radial-gradient(circle, #000020, #000);
+      border: 2px solid #222;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    footer {
+      background-color: #01010f;
+      padding: 10px 0;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
+    }
+  </style>
 </head>
-<body>
-  <header>
-    <h1>🌞 Animated Solar System</h1>
+
+<body class="text-center">
+  <!-- Header -->
+  <header class="py-4 bg-dark shadow-sm">
+    <h1 class="fw-bold">🌞 Animated Solar System</h1>
   </header>
 
-  <main>
-    <!-- Canvas where planets will be drawn later -->
-    <canvas id="solarCanvas" width="800" height="600"></canvas>
+  <!-- Main Section -->
+  <main class="flex-grow-1 d-flex flex-column align-items-center justify-content-center py-4">
+    <canvas id="solarCanvas" width="800" height="600" class="mb-3"></canvas>
 
-    <!-- Control panel (for later stages) -->
-    <div class="controls">
-      <button disabled>Start Animation</button>
-      <button disabled>Pause Animation</button>
-      <button disabled>Play Audio</button>
-      <button disabled>Show Video</button>
+    <!-- Controls -->
+    <div class="d-flex gap-3">
+      <button class="btn btn-secondary" disabled>Start Animation</button>
+      <button class="btn btn-secondary" disabled>Pause Animation</button>
+      <button class="btn btn-secondary" disabled>Play Audio</button>
+      <button class="btn btn-secondary" disabled>Show Video</button>
     </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>Created by Nitu Laurentiu & Apostolescu Raluca — Multimedia Project 2025</p>
   </footer>
+
+  <!-- Bootstrap JS (optional, for buttons/modals later) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
