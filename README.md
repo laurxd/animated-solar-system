@@ -1,17 +1,17 @@
 # 🌞 Animated Solar System
 
 A multimedia project that visualizes planets orbiting the sun using **HTML, Bootstrap, JavaScript**, and the **Canvas, Audio, and Video APIs**.  
-Each stage builds upon the previous one to create a fully interactive and educational experience.
+Each stage adds a new interactive or multimedia component to create a complete learning experience.
 
 ---
 
 ## Project Overview
 The **Animated Solar System** displays the motion of planets orbiting the sun, featuring:
-- Real-time animation using the Canvas API  
-- Responsive design with Bootstrap  
-- Interactive controls (Start / Pause / Speed / Fullscreen)  
-- Hover tooltips showing planet names and distances  
-- Future stages: background space audio and educational video integration  
+- Smooth Canvas animations  
+- Real-time orbit motion and glow effects  
+- Interactive controls for animation and sound  
+- Ambient background music using the Web Audio API  
+- Responsive layout and fullscreen mode  
 
 ---
 
@@ -19,10 +19,10 @@ The **Animated Solar System** displays the motion of planets orbiting the sun, f
 
 | Stage | Description | Status |
 |--------|--------------|--------|
-| **Stage 1** | HTML + Bootstrap layout and design |  Completed |
+| **Stage 1** | Base HTML + Bootstrap layout and theme |  Completed |
 | **Stage 2** | Canvas API — animated solar system with interactive controls |  Completed |
-| **Stage 3** | Audio API — add background ambient music and sound effects |  In progress |
-| **Stage 4** | Video API — embed educational solar system video and final polish |  Pending |
+| **Stage 3** | Audio API — background ambient music with volume control |  Completed |
+| **Stage 4** | Video API — educational video integration and visualization polish |  In progress |
 
 ---
 
@@ -31,11 +31,12 @@ The **Animated Solar System** displays the motion of planets orbiting the sun, f
 - **Bootstrap 5**  
 - **JavaScript (ES6)**  
 - **Canvas API**  
-- **Audio API (coming next)**  
-- **Video API (coming later)**  
+- **Audio API**  
+- **Video API**
 
 ---
 
 ## Authors
 **Nitu Laurentiu Cristian**  
 **Apostolescu Raluca Andreea**
+

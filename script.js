@@ -3,10 +3,51 @@ const canvas = document.getElementById("solarCanvas");
 const ctx = canvas.getContext("2d");
 const startBtn = document.getElementById("startBtn");
 const pauseBtn = document.getElementById("pauseBtn");
+const playAudioBtn = document.getElementById("playAudioBtn");
+const volumeSlider = document.getElementById("volumeSlider");
 
 let hoveredPlanet = null;
 let isPaused = false;
 let speedMultiplier = 1;
+
+// === AUDIO API SETUP ===
+let audioCtx;
+let audioElement;
+let track;
+let isAudioPlaying = false;
+
+// Initialize Audio Context on user interaction
+function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    audioElement = new Audio("assets/audio/space-ambient-351305.mp3");
+    audioElement.loop = true;
+    audioElement.volume = parseFloat(volumeSlider.value);
+
+    track = audioCtx.createMediaElementSource(audioElement);
+    track.connect(audioCtx.destination);
+  }
+}
+
+// Toggle Play / Pause
+playAudioBtn.addEventListener("click", async () => {
+  initAudio();
+  if (!isAudioPlaying) {
+    await audioCtx.resume();
+    audioElement.play();
+    isAudioPlaying = true;
+    playAudioBtn.textContent = "Pause Audio";
+  } else {
+    audioElement.pause();
+    isAudioPlaying = false;
+    playAudioBtn.textContent = "Play / Pause Audio";
+  }
+});
+
+// Volume Control
+volumeSlider.addEventListener("input", (e) => {
+  if (audioElement) audioElement.volume = parseFloat(e.target.value);
+});
 
 // === RESIZE HANDLER ===
 function resizeCanvas() {
@@ -82,30 +123,25 @@ function drawPlanets(update = true) {
     const x = sun.x + Math.cos(planet.angle) * planet.distance;
     const y = sun.y + Math.sin(planet.angle) * planet.distance;
 
-    // Orbit path
     ctx.beginPath();
     ctx.arc(sun.x, sun.y, planet.distance, 0, Math.PI * 2);
     ctx.strokeStyle = "rgba(255,255,255,0.08)";
     ctx.stroke();
 
-    // Planet glow
     ctx.shadowBlur = 10;
     ctx.shadowColor = planet.color;
 
-    // Planet body
     ctx.beginPath();
     ctx.arc(x, y, planet.radius, 0, Math.PI * 2);
     ctx.fillStyle = planet.color;
     ctx.fill();
     ctx.shadowBlur = 0;
 
-    // Label
     ctx.font = "12px Segoe UI";
     ctx.fillStyle = "rgba(255,255,255,0.8)";
     ctx.textAlign = "center";
     ctx.fillText(planet.name, x, y - planet.radius - 10);
 
-    // Hover highlight + info
     if (hoveredPlanet === planet) {
       ctx.beginPath();
       ctx.arc(x, y, planet.radius + 4, 0, Math.PI * 2);
@@ -120,7 +156,6 @@ function drawPlanets(update = true) {
       ctx.fillText(`Distance: ${planet.distance}`, x + 80, y + 10);
     }
 
-    // Move orbit only when allowed
     if (update) planet.angle += planet.speed * speedMultiplier;
   }
 }
@@ -140,7 +175,10 @@ function animate() {
 animate();
 
 // === CONTROLS ===
-startBtn.addEventListener("click", () => (isPaused = false));
+startBtn.addEventListener("click", () => {
+  isPaused = false;
+  if (!isAudioPlaying) playAudioBtn.click(); // optional auto-play sound
+});
 pauseBtn.addEventListener("click", () => (isPaused = true));
 
 // === SPEED SLIDER ===
@@ -154,10 +192,8 @@ slider.className = "form-range w-50 mt-3";
 canvas.parentNode.appendChild(slider);
 slider.addEventListener("input", (e) => (speedMultiplier = parseFloat(e.target.value)));
 
-// === IN-TAB FULLSCREEN (button stays visible + no distortion) ===
+// === FULLSCREEN ===
 let isExpanded = false;
-
-// Fade overlay
 const fadeOverlay = document.createElement("div");
 fadeOverlay.style.position = "fixed";
 fadeOverlay.style.top = "0";
@@ -170,7 +206,6 @@ fadeOverlay.style.transition = "opacity 0.5s ease";
 fadeOverlay.style.pointerEvents = "none";
 document.body.appendChild(fadeOverlay);
 
-// Fullscreen toggle icon
 const fsIcon = document.createElement("div");
 fsIcon.innerHTML = `
   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white"
@@ -192,7 +227,6 @@ document.body.appendChild(fsIcon);
 
 function toggleFullscreen() {
   fadeOverlay.style.opacity = "1";
-
   setTimeout(() => {
     if (!isExpanded) {
       canvas.style.transition = "all 0.6s ease";
@@ -237,7 +271,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && isExpanded) toggleFullscreen();
 });
 
-// === MOUSE HOVER DETECTION (works even when paused) ===
+// === MOUSE HOVER DETECTION ===
 canvas.addEventListener("mousemove", (e) => {
   const rect = canvas.getBoundingClientRect();
   const mouseX = e.clientX - rect.left;
@@ -255,7 +289,6 @@ canvas.addEventListener("mousemove", (e) => {
     }
   }
 
-  // When paused, just redraw static frame (no movement)
   if (isPaused) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBackground();
