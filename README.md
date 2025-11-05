@@ -1,20 +1,41 @@
 # 🌞 Animated Solar System
 
-A multimedia project that visualizes planets orbiting the sun using HTML, CSS, and JavaScript (Canvas, Audio, and Video APIs).
+A multimedia project that visualizes planets orbiting the sun using **HTML, Bootstrap, JavaScript**, and the **Canvas, Audio, and Video APIs**.  
+Each stage builds upon the previous one to create a fully interactive and educational experience.
+
+---
+
+## Project Overview
+The **Animated Solar System** displays the motion of planets orbiting the sun, featuring:
+- Real-time animation using the Canvas API  
+- Responsive design with Bootstrap  
+- Interactive controls (Start / Pause / Speed / Fullscreen)  
+- Hover tooltips showing planet names and distances  
+- Future stages: background space audio and educational video integration  
+
+---
 
 ## Project Stages
-1. **Stage 1 (HTML + CSS)** — Base layout and theme DONE
-2. **Stage 2 (Canvas API)** — Animate planets and orbits
-3. **Stage 3 (Audio API)** — Add background music and sound effects
-4. **Stage 4 (Video API)** — Embed educational space video and final polish
+
+| Stage | Description | Status |
+|--------|--------------|--------|
+| **Stage 1** | HTML + Bootstrap layout and design |  Completed |
+| **Stage 2** | Canvas API — animated solar system with interactive controls |  Completed |
+| **Stage 3** | Audio API — add background ambient music and sound effects |  In progress |
+| **Stage 4** | Video API — embed educational solar system video and final polish |  Pending |
+
+---
 
 ## Technologies Used
-- HTML5
-- CSS3
-- JavaScript (to be added)
-- Canvas API
-- Audio API
-- Video API
+- **HTML5**  
+- **Bootstrap 5**  
+- **JavaScript (ES6)**  
+- **Canvas API**  
+- **Audio API (coming next)**  
+- **Video API (coming later)**  
 
-## Author
-Nitu Laurentiu Cristian & Apostolescu Raluca Andreea
+---
+
+## Authors
+**Nitu Laurentiu Cristian**  
+**Apostolescu Raluca Andreea**
